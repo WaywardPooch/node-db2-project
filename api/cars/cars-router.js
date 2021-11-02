@@ -26,6 +26,15 @@ router.get("/:id", checkCarId, async (req, res, next) => {
   }
 });
 
+router.post("/", checkCarPayload, async (req, res, next) => {
+  try {
+    const newCar = await Car.create(req.body);
+    res.status(201).json(newCar);
+  } catch (err) {
+    next(err);
+  }
+});
+
 // Error Handler
 // eslint-disable-next-line
 router.use((err, req, res, next) => {
