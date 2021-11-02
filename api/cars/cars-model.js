@@ -6,7 +6,7 @@ const getAll = async () => {
 };
 
 const getById = async (id) => {
-  const result = await db("cars").where({ id });
+  const result = await db("cars").where({ id }).first();
   return result;
 };
 
